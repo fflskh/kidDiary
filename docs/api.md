@@ -1,3 +1,8 @@
+API
+1. [短信验证码](#get_sms_code)
+    * [获取验证码](#get_sms_code)
+    * [校验验证码](#validate_sms_code)
+
 ## API
 
 > 所有的接口都有以下返回格式：
@@ -13,7 +18,7 @@
 
 ---
 
-## 获取短信验证码
+## 获取短信验证码 <span id ="get_sms_code"></span>
 **GET** `/v1/api/sms/code`
 
 **Request**
@@ -40,7 +45,7 @@
 
 ---
 
-## 验证短信验证码
+## 验证短信验证码 <span id ="validate_sms_code"></span>
 **POST** `/v1/api/sms/validate-code`
 
 **Request**
