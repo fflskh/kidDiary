@@ -1,6 +1,6 @@
 API
 1. [短信验证码](#get_sms_code)
-    * [获取验证码](#get_sms_code)
+    * [获取验证码](#获取短信验证码)
     * [校验验证码](#validate_sms_code)
 
 ## API
@@ -18,7 +18,7 @@ API
 
 ---
 
-## 获取短信验证码 <span id ="get_sms_code"></span>
+## 获取短信验证码
 **GET** `/v1/api/sms/code`
 
 **Request**
