@@ -1,3 +1,12 @@
 {
-  "logLevel": "debug"
+  "logLevel": "debug",
+  "services": {
+    "sms": {
+      "signName": "Baby养成计划",
+      "accessKeyId": "LTAI5uJqIFvgo7h2",
+      "secretAccessKey": "tLf5U1Y2cIgpWDXDvCiD1KFTprY88w",
+      "templateCode": "SMS_126364210",
+      "codeLength": 6
+    }
+  }
 }

@@ -23,7 +23,7 @@ API
 ---
 
 ## 获取短信验证码
-**GET** `/v1/api/sms/code`
+**GET** `/v1/sms/code`
 
 **Request**
 
@@ -50,7 +50,7 @@ API
 ---
 
 ## 验证短信验证码
-**POST** `/v1/api/sms/validate-code`
+**POST** `/v1/sms/validate-code`
 
 **Request**
 
@@ -71,7 +71,7 @@ API
 ---
 
 ## 注册
-**POST** `/v1/api/user/registration`
+**POST** `/v1/user/registration`
 
 **Request**
 
@@ -91,7 +91,7 @@ API
 ---
 
 ## 登录
-**POST** `/v1/api/user/login`
+**POST** `/v1/user/login`
 
 **Request**
 
@@ -111,7 +111,7 @@ API
 ---
 
 ## 重置密码
-**POST** `/v1/api/user/reset-password`
+**POST** `/v1/user/reset-password`
 
 **Request**
 

@@ -31,7 +31,7 @@ function registerRouter (app, directory) {
         }
 
         const router = new Router({
-            prefix: `/api/${filename}`
+            prefix: `/${filename}`
         });
 
         let fullPath = path.join(directory, filename);
