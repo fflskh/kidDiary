@@ -71,7 +71,7 @@ API
 ---
 
 ## 注册
-**POST** `/v1/user/registration`
+**POST** `/v1/user/signup`
 
 **Request**
 
@@ -91,7 +91,7 @@ API
 ---
 
 ## 登录
-**POST** `/v1/user/login`
+**POST** `/v1/user/signin`
 
 **Request**
 

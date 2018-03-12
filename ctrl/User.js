@@ -1,3 +1,4 @@
+const uuid = require('node-uuid');
 const Base = require('./Base');
 const UserModel = require(_base + 'models/User');
 
@@ -6,41 +7,53 @@ class User extends Base {
         super(context);
     }
 
-    async createUser (opts) {
-        let userId = opts.userId;
-        let firstname = opts.firstname;
-        let lastname = opts.lastname;
-        let age = opts.age;
-        let isMember = opts.isMember;
-        let address = opts.address;
+    /**
+     * 登录
+     * @param opts
+     * @returns {Promise.<Job|*|Promise>}
+     */
+    async signin (opts) {
+        let phone = opts.phone;
+        let password = opts.password;
+
+        let existedUser = await UserModel.findOne({
+            phone: phone
+        }).exec();
+
+        if(!existedUser) {
+            throw new Error(`${phone}未注册`);
+        }
+
+        if(existedUser.encryptedPassword !== _utils.encryptPassword(password, existedUser.salt)) {
+            throw new Error('密码不正确。');
+        }
+
+        return existedUser;
+    }
+
+    async signup (opts) {
+        let phone = opts.phone;
+        let password = opts.password;
+
+        let existedUser = await UserModel.findOne({
+            phone: phone
+        }).exec();
+
+        if(existedUser) {
+            throw new Error(`${phone}已被注册`);
+        }
+
+        let salt =  uuid.v4().replace(/-/g, '');
         let userData = {
-            userId,
-            firstname,
-            lastname,
-            age,
-            isMember,
-            address
+            phone: phone,
+            name: '宝妈',
+            salt: salt,
+            encryptedPassword: _utils.encryptPassword(password, salt)
         };
 
-        this.logger.info('create new user data : ', userData);
         let userModel = new UserModel(userData);
 
         return await userModel.save();
-        // return await new Promise((resolve, reject) => {
-        //     UserModel.collection.insert([userData, userData], function(error, docs) {
-        //         if(error) {
-        //             return reject(error);
-        //         }
-        //
-        //         return resolve(docs);
-        //     })
-        // })
-    }
-
-    async getByUserId (userId) {
-        //mongoose的queries返回的不是标准的promise，但是可以用await获取值
-        //exec()函数返回的才是标准的promise
-        return await UserModel.findOne({userId: userId}).exec();
     }
 }
 
